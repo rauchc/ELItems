@@ -26,8 +26,8 @@ namespace ELItems
             if (cboItems.SelectedIndex > -1)
             {
                 txtResult.Text = numAmount.Value.ToString() + " " + cboItems.Text + Environment.NewLine;
-                string result = _manu.getIngreds(cboItems.Text.Substring(0,cboItems.Text.IndexOf("(") -1), Int32.Parse(numAmount.Value.ToString()),0);
-                txtResult.Text += result;
+                string result = _manu.getIngreds(cboItems.Text.Substring(0,cboItems.Text.IndexOf("(") -1), Int32.Parse(numAmount.Value.ToString()),1);
+                txtResult.Text += result + Environment.NewLine;
                 txtResult.Text += "Summary of ingredients:" + Environment.NewLine;
                 foreach (ingred ing in _manu.Summary.Values)
                 {

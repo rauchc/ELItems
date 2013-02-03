@@ -52,7 +52,7 @@ namespace ELItems
 
         public string getIngreds(string name, int amount, int iteration)
         {
-            if (iteration == 0)
+            if (iteration == 1)
             {
                 _summary.Clear();
                 food = 0;
