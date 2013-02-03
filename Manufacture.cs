@@ -52,6 +52,12 @@ namespace ELItems
 
         public string getIngreds(string name, int amount, int iteration)
         {
+            if (iteration == 0)
+            {
+                _summary.Clear();
+                food = 0;
+            }
+
             string result = null;
             string intendation = null;
             for (int i = 0; i < iteration; i++)
