@@ -56,19 +56,18 @@ namespace ELItems
         private void btnUses_Click(object sender, EventArgs e)
         {
             txtResult.Clear();
-            txtResult.AppendText("Item " + cboItems.Text.Substring(0, cboItems.Text.IndexOf("(") - 1) + " is used in the following recipes:" + Environment.NewLine + Environment.NewLine);
-            foreach (ELItem _item in _manu.AllItems)
+            List<string> _uses = _manu.getUses(cboItems.Text.Substring(0, cboItems.Text.IndexOf("(") - 1));
+            if (_uses.Count > 0)
             {
-                if (_item.Ingreds != null)
+                txtResult.AppendText("Item " + cboItems.Text.Substring(0, cboItems.Text.IndexOf("(") - 1) + " is used in the following " + _uses.Count.ToString() + " recipes:" + Environment.NewLine + Environment.NewLine);
+                foreach (string _s in _uses)
                 {
-                    foreach (ingred _i in _item.Ingreds)
-                    {
-                        if (_i.Name.Equals(cboItems.Text.Substring(0, cboItems.Text.IndexOf("(") - 1)))
-                        {
-                            txtResult.AppendText(_item.Name + Environment.NewLine);
-                        }
-                    }
+                    txtResult.AppendText(_s + Environment.NewLine);
                 }
+            }
+            else
+            {
+                txtResult.AppendText("Item " + cboItems.Text.Substring(0, cboItems.Text.IndexOf("(") - 1) + " has no known use in a recipe." + Environment.NewLine);
             }
         }
 
