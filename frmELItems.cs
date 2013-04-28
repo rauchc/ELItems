@@ -40,11 +40,8 @@ namespace ELItems
         private void frmELItems_Load(object sender, EventArgs e)
         {
             _manu = new Manufacture(ref cboItems);
-
             _manu.parseManufacture();
         }
-
-        
 
         private void reloadToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -54,6 +51,25 @@ namespace ELItems
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnUses_Click(object sender, EventArgs e)
+        {
+            txtResult.Clear();
+            txtResult.AppendText("Item " + cboItems.Text.Substring(0, cboItems.Text.IndexOf("(") - 1) + " is used in the following recipes:" + Environment.NewLine + Environment.NewLine);
+            foreach (ELItem _item in _manu.AllItems)
+            {
+                if (_item.Ingreds != null)
+                {
+                    foreach (ingred _i in _item.Ingreds)
+                    {
+                        if (_i.Name.Equals(cboItems.Text.Substring(0, cboItems.Text.IndexOf("(") - 1)))
+                        {
+                            txtResult.AppendText(_item.Name + Environment.NewLine);
+                        }
+                    }
+                }
+            }
         }
 
     }

@@ -16,6 +16,12 @@ namespace ELItems
 
         private List<ELItem> _allItems = null;
 
+        internal List<ELItem> AllItems
+        {
+            get { return _allItems; }
+            set { _allItems = value; }
+        }
+
         private Dictionary<string, ingred> _summary = null;
 
         public Dictionary<string, ingred> Summary
@@ -314,6 +320,13 @@ namespace ELItems
                     _manualIng.Name = "Action Points";
                     _manualItem.Ingreds.Add(_manualIng);
                     _allItems.Add(_manualItem);
+                    // enriched water essence
+                    _manualItem = new ELItem();
+                    _manualItem.Amount = 1;
+                    _manualItem.Name = "Enriched Water Essence";
+                    _manualItem.Ingreds = null;
+                    _allItems.Add(_manualItem);
+
                     // add items to GUI
                     if (_iCbo != null)
                     {

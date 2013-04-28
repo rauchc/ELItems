@@ -38,6 +38,7 @@
             this.cboItems = new System.Windows.Forms.ComboBox();
             this.btnCalculate = new System.Windows.Forms.Button();
             this.txtResult = new System.Windows.Forms.RichTextBox();
+            this.btnUses = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numAmount)).BeginInit();
             this.SuspendLayout();
@@ -108,16 +109,16 @@
             this.cboItems.FormattingEnabled = true;
             this.cboItems.Location = new System.Drawing.Point(145, 21);
             this.cboItems.Name = "cboItems";
-            this.cboItems.Size = new System.Drawing.Size(539, 21);
+            this.cboItems.Size = new System.Drawing.Size(455, 21);
             this.cboItems.Sorted = true;
             this.cboItems.TabIndex = 4;
             // 
             // btnCalculate
             // 
-            this.btnCalculate.Location = new System.Drawing.Point(690, 19);
+            this.btnCalculate.Location = new System.Drawing.Point(606, 19);
             this.btnCalculate.Name = "btnCalculate";
             this.btnCalculate.Size = new System.Drawing.Size(75, 23);
-            this.btnCalculate.TabIndex = 6;
+            this.btnCalculate.TabIndex = 5;
             this.btnCalculate.Text = "Calculate";
             this.btnCalculate.UseVisualStyleBackColor = true;
             this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
@@ -130,11 +131,22 @@
             this.txtResult.TabIndex = 7;
             this.txtResult.Text = "";
             // 
+            // btnUses
+            // 
+            this.btnUses.Location = new System.Drawing.Point(687, 19);
+            this.btnUses.Name = "btnUses";
+            this.btnUses.Size = new System.Drawing.Size(75, 23);
+            this.btnUses.TabIndex = 6;
+            this.btnUses.Text = "Show uses";
+            this.btnUses.UseVisualStyleBackColor = true;
+            this.btnUses.Click += new System.EventHandler(this.btnUses_Click);
+            // 
             // frmELItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(774, 585);
+            this.Controls.Add(this.btnUses);
             this.Controls.Add(this.txtResult);
             this.Controls.Add(this.btnCalculate);
             this.Controls.Add(this.cboItems);
@@ -167,6 +179,7 @@
         private System.Windows.Forms.RichTextBox txtResult;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reloadToolStripMenuItem;
+        private System.Windows.Forms.Button btnUses;
     }
 }
 
