@@ -16,6 +16,12 @@ namespace ELItems
 
         private List<ELItem> _allItems = null;
 
+        internal List<ELItem> AllItems
+        {
+            get { return _allItems; }
+            set { _allItems = value; }
+        }
+
         private Dictionary<string, ingred> _summary = null;
 
         public Dictionary<string, ingred> Summary
@@ -49,25 +55,6 @@ namespace ELItems
             food = 0;
         }
 
-        public List<string> getUses(string name)
-        {
-            List<string> _uses = new List<string>();
-            foreach (ELItem _item in this._allItems)
-            {
-                if (_item.Ingreds != null)
-                {
-                    foreach (ingred _i in _item.Ingreds)
-                    {
-                        if (_i.Name.Equals(name))
-                        {
-                            _uses.Add(_item.Name);
-                        }
-                    }
-                }
-            }
-            _uses.Sort();
-            return _uses;
-        }
 
         public string getIngreds(string name, int amount, int iteration)
         {
@@ -359,5 +346,6 @@ namespace ELItems
                 MessageBox.Show(ex.ToString());
             }
         }
+
     }
 }
