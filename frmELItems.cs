@@ -37,6 +37,7 @@ namespace ELItems
                     txtNew.Multiline = true;
                     txtNew.Name = "txtResult" + (tabControl1.TabPages.Count - 1).ToString();
                     txtNew.Size = new System.Drawing.Size(733, 487);
+                    txtNew.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
                     tabControl1.TabPages[tabControl1.TabPages.Count - 1].Controls.Add(txtNew);
                     txt = txtNew;
                 }
@@ -112,6 +113,7 @@ namespace ELItems
                     txtNew.Multiline = true;
                     txtNew.Name = "txtResult" + (tabControl1.TabPages.Count - 1).ToString();
                     txtNew.Size = new System.Drawing.Size(733, 487);
+                    txtNew.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
                     tabControl1.TabPages[tabControl1.TabPages.Count - 1].Controls.Add(txtNew);
                     txt = txtNew;
                 }

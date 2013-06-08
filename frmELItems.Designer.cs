@@ -40,15 +40,15 @@
             this.btnCalculate = new System.Windows.Forms.Button();
             this.btnUses = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.txtResult0 = new System.Windows.Forms.TextBox();
             this.contStripTab = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.txtResult0 = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numAmount)).BeginInit();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
             this.contStripTab.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -151,6 +151,20 @@
             this.tabControl1.Size = new System.Drawing.Size(750, 525);
             this.tabControl1.TabIndex = 9;
             // 
+            // contStripTab
+            // 
+            this.contStripTab.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.closeToolStripMenuItem});
+            this.contStripTab.Name = "contStripTab";
+            this.contStripTab.Size = new System.Drawing.Size(153, 48);
+            // 
+            // closeToolStripMenuItem
+            // 
+            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.closeToolStripMenuItem.Text = "Close";
+            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
+            // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.txtResult0);
@@ -167,22 +181,9 @@
             this.txtResult0.Location = new System.Drawing.Point(3, 6);
             this.txtResult0.Multiline = true;
             this.txtResult0.Name = "txtResult0";
+            this.txtResult0.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtResult0.Size = new System.Drawing.Size(733, 487);
             this.txtResult0.TabIndex = 0;
-            // 
-            // contStripTab
-            // 
-            this.contStripTab.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.closeToolStripMenuItem});
-            this.contStripTab.Name = "contStripTab";
-            this.contStripTab.Size = new System.Drawing.Size(153, 48);
-            // 
-            // closeToolStripMenuItem
-            // 
-            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.closeToolStripMenuItem.Text = "Close";
-            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
             // frmELItems
             // 
@@ -207,9 +208,9 @@
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numAmount)).EndInit();
             this.tabControl1.ResumeLayout(false);
+            this.contStripTab.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.contStripTab.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
