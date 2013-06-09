@@ -84,6 +84,18 @@ namespace ELItems
                             foreach (ingred ing in _allItems[i].Ingreds)
                             {
                                 result = result + intendation + (ing.Amount * amount).ToString() + " " + ing.Name + Environment.NewLine;
+                                // try finding ingred in main list
+                                for (int j = 0; j < _allItems.Count; j++)
+                                {
+                                    if (_allItems[j].Name == ing.Name)
+                                    {
+                                        if (_allItems[j].ByLuckOnly == true)
+                                        {
+                                            result = result + intendation + "\tMade by luck only." + Environment.NewLine;
+                                        }
+                                        break;
+                                    }
+                                } 
                                 string _subIngs = getIngreds(ing.Name, amount * ing.Amount, iteration + 1);
                                 if (_subIngs == null)
                                 {
@@ -116,6 +128,54 @@ namespace ELItems
                 return null;
             }
             return null;
+        }
+
+        public string getUses(string name)
+        {
+            string result = null;
+            ELItem _Uses = null;
+            int _amounts = 0;
+
+            foreach (ELItem _item in this.AllItems)
+            {
+                if (_item.Name == name)
+                {
+                    _Uses = _item;
+                }
+                if (_item.Ingreds != null)
+                {
+                    foreach (ingred _i in _item.Ingreds)
+                    {
+                        if (_i.Name.Equals(name.Substring(0, name.IndexOf("(") - 1)))
+                        {
+                            _amounts++;
+                            result = result + _item.Name + Environment.NewLine;
+                        }
+                    }
+                }
+            }
+            if (_Uses != null)
+            {
+                if (_Uses.ByLuckOnly == true)
+                {
+                    result = result + Environment.NewLine +  "\tMade by luck only." + Environment.NewLine;
+                }
+            }
+
+            if (_amounts == 0)
+            {
+                result = "Item " + name.Substring(0, name.IndexOf("(") - 1) + " is not used in any recipe." + Environment.NewLine + Environment.NewLine + result;
+            }
+            else if (_amounts == 1)
+            {
+                result = "Item " + name.Substring(0, name.IndexOf("(") - 1) + " is used in the following recipe:" + Environment.NewLine + Environment.NewLine + result;
+            }
+            else
+            {
+                result = "Item " + name.Substring(0, name.IndexOf("(") - 1) + " is used in the following " + _amounts.ToString() + " recipes:" + Environment.NewLine + Environment.NewLine + result;
+            }
+
+            return result;
         }
 
 
@@ -157,6 +217,9 @@ namespace ELItems
             parseManufacture();
         }
 
+        /// <summary>
+        /// parses the manufacture.htm and adds the items to the cbo
+        /// </summary>
         public void parseManufacture()
         {
             // clear cbo
@@ -248,85 +311,72 @@ namespace ELItems
                     }
 
                     // create a few hard coded items not in the list
-                    ELItem _manualItem;
                     ingred _manualIng;
+                    List<ingred> _ManualIngreds;
                     // hydrogenium ore
-                    _manualItem = new ELItem();
-                    _manualItem.Amount = 1;
-                    _manualItem.Name = "Hydrogenium Ore";
-                    _manualItem.Ingreds = new List<ingred>();
+                    _ManualIngreds = new List<ingred>();
                     _manualIng = new ingred();
                     _manualIng.Amount = 1;
                     _manualIng.Name = "Steel Two Edged Sword";
-                    _manualItem.Ingreds.Add(_manualIng);
-                    _allItems.Add(_manualItem);
+                    _ManualIngreds.Add(_manualIng);
+                    _allItems.Add(new ELItem("Hydrogenium Ore", 1, _ManualIngreds, false));
                     // seridium ore
-                    _manualItem = new ELItem();
-                    _manualItem.Amount = 1;
-                    _manualItem.Name = "Seridium Ore";
-                    _manualItem.Ingreds = new List<ingred>();
+                    _ManualIngreds = new List<ingred>();
                     _manualIng = new ingred();
                     _manualIng.Amount = 1;
                     _manualIng.Name = "Matter Conglomerate";
-                    _manualItem.Ingreds.Add(_manualIng);
-                    _allItems.Add(_manualItem);
+                    _ManualIngreds.Add(_manualIng);
+                    _allItems.Add(new ELItem("Seridium Ore", 1, _ManualIngreds, false));
                     // wolfram ore
-                    _manualItem = new ELItem();
-                    _manualItem.Amount = 1;
-                    _manualItem.Name = "Wolframite";
-                    _manualItem.Ingreds = new List<ingred>();
+                    _ManualIngreds = new List<ingred>();
                     _manualIng = new ingred();
                     _manualIng.Amount = 1;
                     _manualIng.Name = "Steel Long Sword";
-                    _manualItem.Ingreds.Add(_manualIng);
-                    _allItems.Add(_manualItem);
+                    _ManualIngreds.Add(_manualIng);
+                    _allItems.Add(new ELItem("Wolframite", 1, _ManualIngreds, false));
                     // tin ore
-                    _manualItem = new ELItem();
-                    _manualItem.Amount = 1;
-                    _manualItem.Name = "Tin Ore";
-                    _manualItem.Ingreds = new List<ingred>();
+                    _ManualIngreds = new List<ingred>();
                     _manualIng = new ingred();
                     _manualIng.Amount = 1;
                     _manualIng.Name = "Iron Sword";
-                    _manualItem.Ingreds.Add(_manualIng);
-                    _allItems.Add(_manualItem);
+                    _ManualIngreds.Add(_manualIng);
+                    _allItems.Add(new ELItem("Tin Ore", 1, _ManualIngreds, false));
                     // copper ore
-                    _manualItem = new ELItem();
-                    _manualItem.Amount = 1;
-                    _manualItem.Name = "Copper Ore";
-                    _manualItem.Ingreds = new List<ingred>();
+                    _ManualIngreds = new List<ingred>();
                     _manualIng = new ingred();
                     _manualIng.Amount = 1;
                     _manualIng.Name = "Matter Conglomerate";
-                    _manualItem.Ingreds.Add(_manualIng);
-                    _allItems.Add(_manualItem);
+                    _ManualIngreds.Add(_manualIng);
+                    _allItems.Add(new ELItem("Copper Ore", 1, _ManualIngreds, false));
                     // dvarium ore
-                    _manualItem = new ELItem();
-                    _manualItem.Amount = 1;
-                    _manualItem.Name = "Dvarium Ore";
-                    _manualItem.Ingreds = new List<ingred>();
+                    _ManualIngreds = new List<ingred>();
                     _manualIng = new ingred();
                     _manualIng.Amount = 1;
                     _manualIng.Name = "Iron Broad Sword";
-                    _manualItem.Ingreds.Add(_manualIng);
-                    _allItems.Add(_manualItem);
+                    _ManualIngreds.Add(_manualIng);
+                    _allItems.Add(new ELItem("Dvarium Ore", 1, _ManualIngreds, false));
                     // amber
-                    _manualItem = new ELItem();
-                    _manualItem.Amount = 1;
-                    _manualItem.Name = "Amber";
-                    _manualItem.Ingreds = new List<ingred>();
+                    _ManualIngreds = new List<ingred>();
                     _manualIng = new ingred();
                     _manualIng.Amount = 30;
                     _manualIng.Name = "Action Points";
-                    _manualItem.Ingreds.Add(_manualIng);
-                    _allItems.Add(_manualItem);
+                    _ManualIngreds.Add(_manualIng);
+                    _allItems.Add(new ELItem("Amber",1,_ManualIngreds,false));
                     // enriched water essence
-                    _manualItem = new ELItem();
-                    _manualItem.Amount = 1;
-                    _manualItem.Name = "Enriched Water Essence";
-                    _manualItem.Ingreds = null;
-                    _allItems.Add(_manualItem);
-
+                    _allItems.Add(new ELItem("Enriched Water Essence", 1, true));
+                    // enriched energy essence
+                    _allItems.Add(new ELItem("Enriched Energy Essence", 1, true));
+                    // enriched death essence
+                    _allItems.Add(new ELItem("Enriched Death Essence", 1, true));
+                    // modable swords
+                    // Modable Iron Sword
+                    _allItems.Add(new ELItem("Modable Iron Sword", 1, true));
+                    // Modable Steel Long Sword
+                    _allItems.Add(new ELItem("Modable Steel Long Sword", 1, true));
+                    // Modable Steel Two Edged Sword
+                    _allItems.Add(new ELItem("Modable Steel Two Edged Sword", 1, true));
+                    // Modable Titanium/Steel Alloy Short Sword
+                    _allItems.Add(new ELItem("Modable Titanium/Steel Alloy Short Sword", 1, true));
                     // add items to GUI
                     if (_iCbo != null)
                     {

@@ -122,20 +122,8 @@ namespace ELItems
                     tabControl1.SelectedTab.Text = "U: " + cboItems.Text.Substring(0, cboItems.Text.IndexOf("(") - 1);
                 }
                 tabControl1.SelectedIndex = tabControl1.TabPages.Count - 1;
-                txt.AppendText("Item " + cboItems.Text.Substring(0, cboItems.Text.IndexOf("(") - 1) + " is used in the following recipes:" + Environment.NewLine + Environment.NewLine);
-                foreach (ELItem _item in _manu.AllItems)
-                {
-                    if (_item.Ingreds != null)
-                    {
-                        foreach (ingred _i in _item.Ingreds)
-                        {
-                            if (_i.Name.Equals(cboItems.Text.Substring(0, cboItems.Text.IndexOf("(") - 1)))
-                            {
-                                txt.AppendText(_item.Name + Environment.NewLine);
-                            }
-                        }
-                    }
-                }
+                txt.Text = _manu.getUses(cboItems.Text);
+                
             }
             tabControl1.TabPages[tabControl1.TabPages.Count - 1].Select();
         }
